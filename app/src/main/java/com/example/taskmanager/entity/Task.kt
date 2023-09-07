@@ -7,6 +7,7 @@ import com.example.taskmanager.enumeration.Category
 import com.example.taskmanager.enumeration.Priority
 import java.time.LocalDate
 import java.time.LocalTime
+import java.util.Date
 
 @Entity(tableName = "tasks")
 data class Task(
@@ -21,20 +22,20 @@ data class Task(
     @ColumnInfo(name = "category")
     val taskCategory: Category?,
     @ColumnInfo(name = "task_note")
-    val taskNote: String?,
+    val taskNote: String? = null,
     // storing filePaths as strings instead of the file to improve efficiency
     @ColumnInfo(name = "task_file")
-    val taskFile: String?,
+    val taskFile: String? = null,
     @ColumnInfo(name = "task_image")
-    val taskImage: String?,
+    val taskImage: String? = null,
     @ColumnInfo(name = "task_date")
-    val taskDate: LocalDate?,
+    val taskDate: Date? = null,
     @ColumnInfo(name = "task_due_time")
-    val dueTime: LocalTime?,
+    val dueTime: Date? = null,
     @ColumnInfo(name = "task_notification_date")
-    val taskNotificationDate: LocalDate?,
+    val taskNotificationDate: Date? = null,
     @ColumnInfo(name = "task_notification_time")
-    val taskNotificationTime: LocalTime?,
+    val taskNotificationTime: Date? = null,
     @ColumnInfo(name = "task_completed")
     val completed: Boolean = false
 

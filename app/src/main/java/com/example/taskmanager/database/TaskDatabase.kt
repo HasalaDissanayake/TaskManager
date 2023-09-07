@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.taskmanager.converter.DateTimeConverter
 import com.example.taskmanager.dao.TaskDao
 import com.example.taskmanager.entity.Task
 
 // If any changes done to entity version needs to incremented
-@Database(entities = [Task::class], version = 1)
+@Database(entities = [Task::class], version = 1, exportSchema = false)
+@TypeConverters(DateTimeConverter::class)
 abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun taskDao() : TaskDao
