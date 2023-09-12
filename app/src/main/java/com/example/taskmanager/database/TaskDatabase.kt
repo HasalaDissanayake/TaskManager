@@ -10,7 +10,7 @@ import com.example.taskmanager.dao.TaskDao
 import com.example.taskmanager.entity.Task
 
 // If any changes done to entity version needs to incremented
-@Database(entities = [Task::class], version = 1, exportSchema = false)
+@Database(entities = [Task::class], version = 4, exportSchema = false)
 @TypeConverters(DateTimeConverter::class)
 abstract class TaskDatabase : RoomDatabase() {
 
@@ -26,6 +26,7 @@ abstract class TaskDatabase : RoomDatabase() {
             // to make sure only single thread at a time can execute this block synchronized used
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(context, TaskDatabase::class.java, "task_database")
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also { Instance = it }
             }
